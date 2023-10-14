@@ -11,8 +11,7 @@ public class BoundaryEmmenager {
 
 	public void emmenager(String nomVisiteur) {
 		if (controlEmmenager.isHabitant(nomVisiteur)) {
-			System.out.println(
-					"Mais vous êtes déjà un habitant du village !");
+			System.out.println("Mais vous êtes déjà un habitant du village !");
 		} else {
 			StringBuilder question = new StringBuilder();
 			question.append("Êtes-vous :\n");
@@ -27,12 +26,11 @@ public class BoundaryEmmenager {
 					break;
 
 				case 2:
-					//TODO a completer
+					emmenagerGaulois(nomVisiteur);
 					break;
 
 				default:
-					System.out
-							.println("Vous devez choisir le chiffre 1 ou 2 !");
+					System.out.println("Vous devez choisir le chiffre 1 ou 2 !");
 					break;
 				}
 			} while (choixUtilisateur != 1 && choixUtilisateur != 2);
@@ -40,6 +38,31 @@ public class BoundaryEmmenager {
 	}
 
 	private void emmenagerDruide(String nomVisiteur) {
-		//TODO a completer
+		StringBuilder chaine = new StringBuilder("Bienvenue druide "), chaine2 = new StringBuilder(), chaine3 = new StringBuilder();
+		chaine.append(nomVisiteur);
+		System.out.println(chaine.toString());
+		int forceDruide = Clavier.entrerEntier("Quelle est votre force ?"), effetPotionMax, effetPotionMin;
+		chaine2.append("Quelle est la force de la potion la plus faible que vous produisez ?");
+		chaine3.append("Quelle est la force de la potion la plus forte que vous produisez ?");
+		System.out.println(chaine2.toString());
+		effetPotionMin = Clavier.entrerEntier("PotionMin");
+		System.out.println(chaine3.toString());
+		effetPotionMax = Clavier.entrerEntier("PotionMax");
+		while (effetPotionMax < effetPotionMin){
+			System.out.println("Attention druide, vous vous êtes trompé entre le minimum et le maximum");
+			System.out.println(chaine2.toString());
+			effetPotionMin = Clavier.entrerEntier("PotionMin");
+			System.out.println(chaine3.toString());
+			effetPotionMax = Clavier.entrerEntier("PotionMax");
+		}
+		controlEmmenager.ajouterDruide(nomVisiteur, forceDruide, effetPotionMin, effetPotionMax);
+	}
+
+	private void emmenagerGaulois(String nomVisiteur) {
+		StringBuilder chaine = new StringBuilder("Bienvenue villageois ");
+		chaine.append(nomVisiteur);
+		System.out.println(chaine.toString());
+		int forceGaulois = Clavier.entrerEntier("Quelle est votre force ?");
+		controlEmmenager.ajouterGaulois(nomVisiteur, forceGaulois);
 	}
 }
