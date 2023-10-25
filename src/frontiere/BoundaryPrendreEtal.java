@@ -28,22 +28,24 @@ public class BoundaryPrendreEtal {
 				chaine.append(" je n'ai plus d'étal qui ne soit pas déjà occupé.");
 				System.out.println(chaine.toString());
 			} else {
-				System.out.println("C'est parfait, il me reste un étal pour vous !");
-				System.out.println("Il me faudrait quelques renseignements :\nQuel produit souhaitez-vous vendre ?");
-				String produit = scan.nextLine();
-				int nbProduit =	Clavier.entrerEntier("Combien souhaitez-vous en vendre ?");
-				int numeroEtal = controlPrendreEtal.prendreEtal(nomVendeur, produit, nbProduit);
-				if (numeroEtal != -1){					
-					chaine = new StringBuilder("Le vendeur ");
-					chaine.append(nomVendeur);
-					chaine.append("s'est installé à l'étal n°");
-					chaine.append(numeroEtal+1);
-				}
+				installerVendeur(nomVendeur);
 			}
 		}
 	}
 
-	private void installerVendeur(String nomVendeur) {
-		//to do
+	private void installerVendeur(String nomVendeur) {		
+		System.out.println("C'est parfait, il me reste un étal pour vous !");
+		System.out.println("Il me faudrait quelques renseignements :\nQuel produit souhaitez-vous vendre ?");
+		String produit = scan.nextLine();
+		int nbProduit =	Clavier.entrerEntier("Combien souhaitez-vous en vendre ?");
+		int numeroEtal = controlPrendreEtal.prendreEtal(nomVendeur, produit, nbProduit);
+			
+		if (numeroEtal != -1){					
+			StringBuilder chaine = new StringBuilder("Le vendeur ");
+			chaine.append(nomVendeur);
+			chaine.append("s'est installé à l'étal n°");
+			chaine.append(numeroEtal+1);
+			System.out.println(chaine.toString());
+		}
 	}
 }
