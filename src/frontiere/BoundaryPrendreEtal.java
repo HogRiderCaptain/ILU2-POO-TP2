@@ -43,7 +43,7 @@ public class BoundaryPrendreEtal {
 		if (numeroEtal != -1){					
 			StringBuilder chaine = new StringBuilder("Le vendeur ");
 			chaine.append(nomVendeur);
-			chaine.append("s'est installé à l'étal n°");
+			chaine.append(" s'est installé à l'étal n°");
 			chaine.append(numeroEtal+1);
 			System.out.println(chaine.toString());
 		}

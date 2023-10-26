@@ -41,7 +41,7 @@ public class Etal {
 		if (quantite == 0) {
 			quantiteAcheter = 0;
 		}
-		if (quantiteAcheter > quantite) {
+		if (quantiteAcheter >= quantite) {
 			quantiteAcheter = quantite;
 		}
 		if (etalOccupe) {
