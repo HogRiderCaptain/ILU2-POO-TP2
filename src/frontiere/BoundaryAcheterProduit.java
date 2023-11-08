@@ -28,39 +28,20 @@ public class BoundaryAcheterProduit {
 			+ "\nBonjour " + nomAcheteur + ",\nCombien de " + nomProduit + " voulez-vous acheter ?");
 			int nbreAchat = scan.nextInt();
 
-			phaseAchat(nbreAchat,nomGaulois,nomAcheteur,nomProduit);
-
-		}	
-	}
-
-	public void phaseAchat(int nbreAchat,String nomGaulois, String nomAcheteur, String nomProduit){
-		int quantiteEtal = controlAcheterProduit.confirmationAchat(nbreAchat, nomGaulois);
-		StringBuilder message = new StringBuilder(nomAcheteur); 
-		if (quantiteEtal >= nbreAchat) {
-			message.append(" achète ");
-			message.append(nbreAchat);
-			message.append(" ");
-			message.append(nomProduit);
-			message.append(" à ");
-			message.append(nomGaulois);
-		} else 
-			message.append(" veut acheter ");
-			message.append(nbreAchat);
-			message.append(" ");
-			message.append(nomProduit);
-			if(quantiteEtal < nbreAchat) {
-			message.append(", malheuresement ");
-			message.append(nomGaulois);
-			message.append(" n'en a plus que ");
-			message.append(quantiteEtal);
-			message.append(". ");
-			message.append(nomAcheteur);
-			message.append(" achère tout le stock de ");
-			message.append(nomGaulois);			
+			int quantiteAcheter = controlAcheterProduit.confirmationAchat(nbreAchat, nomGaulois);
+			int quantiteEtal = controlAcheterProduit.quantiteEtal(nomGaulois);
+			StringBuilder message = new StringBuilder(nomAcheteur); 
+			if (quantiteEtal >= nbreAchat) {
+				message.append(" achète " + nbreAchat +" "+nomProduit+" à "+nomGaulois+".");
 			} else {
-			message.append(", malheureusementil n'y en a plus !");
-		}
-		message.append(".");
-		System.out.println(message.toString());
+				message.append(" veut acheter "+nbreAchat+" "+nomProduit+", malheureusement ");
+				if(quantiteEtal < nbreAchat) {
+					message.append(nomGaulois+" n'en a plus que "+quantiteEtal+". "+nomAcheteur+" achète tout le stock de "+nomGaulois+".");	
+				} else {
+					message.append("il n'y en a plus !");
+				}
+			System.out.println(message.toString());
+			}
+		}	
 	}
 }

@@ -31,8 +31,13 @@ public class ControlAcheterProduit {
 
 	public int confirmationAchat(int nbreAchat,String nomGaulois){
 		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomGaulois);
-		int quantite = etal.getQuantite();
 		int quantiteAcheter = etal.acheterProduit(nbreAchat);
-		return quantite;
+		return quantiteAcheter;
+	}
+	
+	public int quantiteEtal(String nomGaulois){
+		Etal etal = controlTrouverEtalVendeur.trouverEtalVendeur(nomGaulois);
+		return etal.getQuantite();
 	}
 }
+
